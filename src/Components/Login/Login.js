@@ -1,7 +1,9 @@
 import { compareSync } from "bcryptjs";
 import "./Login.css";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../../Contexts/UserContext";
 function Login() {
   let navigate = useNavigate();
   let {
@@ -9,6 +11,7 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [user, setUser] = useContext(UserContext);
   function onLoginSubmit(newUser) {
     fetch(`http://localhost:4000/users?username=${newUser.username}`, {
       method: "GET",
@@ -20,7 +23,8 @@ function Login() {
         } else {
           let result = compareSync(newUser.password, userobjarray[0].password);
           if (result === true) {
-            navigate("/userdashboard", { state: userobjarray[0] });
+            setUser(userobjarray[0]); 
+            navigate("/buy", { state: userobjarray[0] });
           } else {
             alert("Invalid password");
           }

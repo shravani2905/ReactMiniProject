@@ -20,6 +20,9 @@
     flex-wrap: wrap;
     margin-bottom: 20px;
   }
+  .viewdata{
+    margin-bottom: 30px;
+  }
   .pay {
     background-color: rgb(17, 139, 17);
     color: white;

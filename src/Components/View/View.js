@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 function View() {
   let { state } = useLocation();
   return (
-    <div>
+    <div className="viewdata">
       <h3 className="title">{state.title}</h3>
       <div className="card card1 head1">
         <div className="flex1">
